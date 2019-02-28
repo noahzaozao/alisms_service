@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package alisms;
+
+message SMSVerficationCodeData {
+    string mobile = 1;
+}
+
+message SMSVerficationCodeCheckData {
+    string mobile = 1;
+    string vcode = 2;
+}
+
+message SMSVerficationQueryData {
+    string mobile = 1;
+    string vcode = 2;
+}
+
+message SMSVerficationResponseData {
+    int64 return_code = 1;
+    string message = 2;
+    string data = 3;
+}
+
+message SMSVerficationQueryResponseData {
+    string mobile = 1;
+    string vcode = 2;
+}
+
+service AuthService {
+    rpc SMSVerficationCode(SMSVerficationCodeData) returns (SMSVerficationResponseData) {}
+    rpc SMSVerficationCodeCheck(SMSVerficationCodeCheckData) returns (SMSVerficationResponseData) {}
+    rpc SMSVerficationQuery(SMSVerficationQueryData) returns (SMSVerficationQueryResponseData) {}
+}

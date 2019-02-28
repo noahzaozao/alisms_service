@@ -1,0 +1,13 @@
+config:
+  SECRET_KEY: ""
+  DEBUG: "true"
+  DEFAULT_CHARSET: "utf-8"
+  SMSConfig:
+    ACCESS_KEY_ID: ""
+    ACCESS_KEY_SECRET: ""
+  CACHES:
+  - type: "redis"
+    host: "127.0.0.1"
+    port: "6379"
+    db: 0
+    password: "password"
