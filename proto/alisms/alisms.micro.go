@@ -10,8 +10,8 @@ It is generated from these files:
 It has these top-level messages:
 	SMSVerficationCodeData
 	SMSVerficationCodeCheckData
-	SMSVerficationQueryData
 	SMSVerficationResponseData
+	SMSVerficationQueryData
 	SMSVerficationQueryResponseData
 */
 package alisms

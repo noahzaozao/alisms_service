@@ -40,12 +40,12 @@ func (aliSmsService *AliSMSService) SMSVerficationCode(
 	request.Version = "2017-05-25"
 	request.ApiName = "SendSms"
 
-	request.QueryParams["SignName"] = "222"
-	request.QueryParams["PhoneNumbers"] = "111"
-	request.QueryParams["TemplateCode"] = "333"
-	request.QueryParams["TemplateParam"] = "444"
-	request.QueryParams["SmsUpExtendCode"] = "555"
-	request.QueryParams["OutId"] = "666"
+	request.QueryParams["SignName"] = in.SignName
+	request.QueryParams["PhoneNumbers"] = in.PhoneNumbers
+	request.QueryParams["TemplateCode"] = in.TemplateCode
+	request.QueryParams["TemplateParam"] = in.TemplateParam
+	request.QueryParams["SmsUpExtendCode"] = in.SmsUpExtendCode
+	request.QueryParams["OutId"] = in.OutId
 
 	response, err := client.ProcessCommonRequest(request)
 	if err != nil {
@@ -65,22 +65,25 @@ func (aliSmsService *AliSMSService) SMSVerficationCodeCheck(
 func (aliSmsService *AliSMSService) SMSVerficationQuery(
 	ctx context.Context, in *alisms.SMSVerficationQueryData, out *alisms.SMSVerficationQueryResponseData) error {
 
-	client, err := sdk.NewClientWithAccessKey("default", "<accessKeyId>", "<accessSecret>")
+	client, err := sdk.NewClientWithAccessKey(
+		"default",
+		aliSmsService.Config.SMSConfig.ACCESS_KEY_ID,
+		aliSmsService.Config.SMSConfig.ACCESS_KEY_SECRET)
 	if err != nil {
 		panic(err)
 	}
 
 	request := requests.NewCommonRequest()
 	request.Method = "POST"
-	request.Scheme = "https" // https | http
+	request.Scheme = "https"
 	request.Domain = "dysmsapi.aliyuncs.com"
 	request.Version = "2017-05-25"
 	request.ApiName = "QuerySendDetails"
-	request.QueryParams["PhoneNumber"] = "111"
-	request.QueryParams["SendDate"] = "222"
-	request.QueryParams["PageSize"] = "333"
-	request.QueryParams["CurrentPage"] = "444"
-	request.QueryParams["BizId"] = "555"
+	request.QueryParams["PhoneNumber"] = in.PhoneNumbers
+	request.QueryParams["SendDate"] = in.SendDate
+	request.QueryParams["PageSize"] = in.PageSize
+	request.QueryParams["CurrentPage"] = in.CurrentPage
+	request.QueryParams["BizId"] = in.BizId
 
 	response, err := client.ProcessCommonRequest(request)
 	if err != nil {

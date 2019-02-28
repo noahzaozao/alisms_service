@@ -3,16 +3,16 @@ syntax = "proto3";
 package alisms;
 
 message SMSVerficationCodeData {
-    string mobile = 1;
+    string sign_name = 1;
+    string phone_numbers = 2;
+    string template_code = 3;
+    string template_param = 4;
+    string sms_up_extend_code = 5;
+    string out_id = 6;
 }
 
 message SMSVerficationCodeCheckData {
-    string mobile = 1;
-    string vcode = 2;
-}
-
-message SMSVerficationQueryData {
-    string mobile = 1;
+    string phone_numbers = 1;
     string vcode = 2;
 }
 
@@ -22,9 +22,18 @@ message SMSVerficationResponseData {
     string data = 3;
 }
 
+message SMSVerficationQueryData {
+    string phone_numbers = 1;
+    string send_date = 2;
+    string page_size = 3;
+    string current_page = 4;
+    string biz_id = 5;
+}
+
 message SMSVerficationQueryResponseData {
-    string mobile = 1;
-    string vcode = 2;
+    int64 return_code = 1;
+    string message = 2;
+    string data = 3;
 }
 
 service AuthService {
