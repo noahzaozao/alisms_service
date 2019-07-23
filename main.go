@@ -5,9 +5,9 @@ import (
 	"time"
 	"fmt"
 
-	"github.com/micro/go-grpc"
+	go_config "github.com/micro/go-micro/config"
+	"github.com/micro/go-micro/service/grpc"
 	"github.com/micro/go-micro"
-	go_config "github.com/micro/go-config"
 
 	"github.com/noahzaozao/alisms_service/coinfig"
 	"github.com/noahzaozao/alisms_service/cache"
